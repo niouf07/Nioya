@@ -15,7 +15,8 @@ module.exports = {
         .setName("duration")
         .setDescription("Timeout duration in minutes")
         .setRequired(true)
-    ),
+    )
+    .setDefaultMemberPermissions(PermissionFlagsBits.TimeoutMembers),
 
   async execute(interaction) {
     const target = interaction.options.getMember("target");
