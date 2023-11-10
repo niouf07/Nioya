@@ -2,5 +2,5 @@
 /package-lock.json
 /package.json
 /config.json
-/8ball.js
+/commands/fun/8ball.js
 
