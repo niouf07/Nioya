@@ -1,8 +1,6 @@
 /node_modules
 /package-lock.json
 /package.json
-<<<<<<< HEAD
 /config.json
-=======
-/config.json
->>>>>>> 19bc96e4bb8d04e73b58eb3441a3890931a761aa
+/8ball.js
+
