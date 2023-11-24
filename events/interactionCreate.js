@@ -19,6 +19,7 @@ module.exports = {
     } catch (error) {
       console.error(`Error executing ${interaction.commandName}`);
       console.error(error);
+      console.error("UwU");
     }
   },
 };
