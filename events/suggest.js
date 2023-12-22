@@ -9,7 +9,7 @@ const {
 } = require("discord.js");
 
 // Bot config
-const config = require("./config.json");
+const config = require("../config.json");
 const token = config.token;
 const channelId = config.channelId;
 
