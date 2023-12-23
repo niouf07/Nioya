@@ -6,6 +6,7 @@
   <a href="https://github.com/niouf07">Niouf</a>
 
   </br>
+  </br>
   If you have any idea for the bot, feel free to tell me in our <a href="https://discord.gg/q5e62Bw7gR">discord server</a>
 </p>
 
