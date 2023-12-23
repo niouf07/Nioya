@@ -9,7 +9,8 @@ const {
 } = require("discord.js");
 
 // Bot config
-const config = require("../config.json");
+const config = require("./config.json");
+const token = config.token;
 const channelId = config.channelId;
 
 // Create new client
@@ -21,6 +22,11 @@ const client = new Client({
     GatewayIntentBits.Guilds,
   ],
   partials: [Partials.Channel],
+});
+
+// When bot is ready
+client.once("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
 // When a DM is received
@@ -59,3 +65,6 @@ client.on("messageCreate", async (message) => {
     }
   }
 });
+
+// Log in with bot token
+client.login(token);
