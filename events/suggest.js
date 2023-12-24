@@ -7,7 +7,7 @@ const {
   ButtonBuilder,
   ButtonStyle,
 } = require("discord.js");
-
+console.log("import");
 // Bot config
 const config = require("../config.json");
 const channelId = config.channelId;
@@ -22,7 +22,7 @@ const client = new Client({
   ],
   partials: [Partials.Channel],
 });
-
+console.log("Import Intents ans Partials");
 // When a DM is received
 client.on("messageCreate", async (message) => {
   console.log("Hello");
