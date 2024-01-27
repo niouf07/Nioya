@@ -22,7 +22,7 @@ const client = new Client({
   ],
   partials: [Partials.Channel],
 });
-console.log("Import Intents ans Partials");
+console.log("Intents ans Partials");
 // When a DM is received
 client.on("messageCreate", async (message) => {
   console.log("Hello");
