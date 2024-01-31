@@ -1,9 +1,26 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { Client, Collection, GatewayIntentBits } = require("discord.js");
+const {
+  Client,
+  Collection,
+  GatewayIntentBits,
+  Partials,
+  ButtonBuilder,
+  ButtonStyle,
+  EmbedBuilder,
+} = require("discord.js");
 const { token } = require("./config.json");
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.Guilds,
+  ],
+  partials: [Partials.Channel],
+});
+console.log("Intents ans Partials");
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, "commands");
@@ -41,5 +58,64 @@ for (const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args));
   }
 }
+
+const config = require("./config.json");
+const channelId = config.channelId;
+
+client.on("messageCreate", async (message) => {
+  console.log("Hello");
+  console.log(message.channel.type);
+  // Only handle DMs
+  if (message.channel.type === 1) {
+    try {
+      // Fetch target channel
+      const channel = client.channels.cache.get(channelId);
+
+      // Create embed
+      const embed = EmbedBuilder.from({
+        description: message.content,
+        color: 5814783,
+        author: {
+          name: message.author.tag,
+        },
+      });
+
+      const button1 = new ButtonBuilder()
+        .setCustomId("accept")
+        .setLabel("✅ Accept")
+        .setStyle(ButtonStyle.Success)
+        .setCustomId("accept");
+
+      const button2 = new ButtonBuilder()
+        .setCustomId("refuse")
+        .setLabel("❌ Refuse")
+        .setStyle(ButtonStyle.Danger)
+        .setCustomId("refuse");
+
+      channel.send({
+        embeds: [embed],
+        components: [
+          { type: 1, components: [button1] },
+          { type: 1, components: [button2] },
+        ],
+      });
+
+      client.on("interactionCreate", async (interaction) => {
+        if (!interaction.isButton()) return;
+
+        if (interaction.customId === "accept") {
+          await interaction.reply("Accepted");
+        } else if (interaction.customId === "refuse") {
+          await interaction.reply("Refused");
+        }
+      });
+
+      console.log(`Sent message to channel ${channel.name}`);
+      console.log(`MESSAGE: ${message.content}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+});
 
 client.login(token);
