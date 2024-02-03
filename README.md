@@ -10,4 +10,7 @@
   If you have any idea for the bot, feel free to tell me in our <a href="https://discord.gg/q5e62Bw7gR">discord server</a>
 </p>
 
-<p>If you see any issues, please tell me or directly do a PR</p>
+<p>If you see any issues, please tell me or directly do a PR
+<br/>
+  Some features on the main don't work (Leveling system)
+</p>
