@@ -11,6 +11,4 @@
 </p>
 
 <p>If you see any issues, please tell me or directly do a PR
-<br/>
-Some features on the main don't work (Leveling system)
 </p>
